@@ -1,3 +1,4 @@
+//Use event.preventDefault() inside functions and standard js/jQuery wrapper learnt last week?
 //starter code has included links to Bootstrap, GoogleAPIs and FontAwesome (presumbaly for delete button icon) and scripts for jQuery and DayJS
 //<p> div already provided in header for inserting today's date. I've currently hardcoded text "Today is" into html but should I dynamically do this as well as DayJS ref?
 //"timeblocks" = grid for working day (are we allowed to use Bootstrap template?) - CSS has the styles for these elements already defined!
@@ -13,5 +14,21 @@
 
 // README says "dynamically updated HTML and CSS powered by jQuery."
 
-var container = $('.container');
-var currentDay = $('#currentDay');
+var containerEl = $('.container');
+var currentDayEl = $('#currentDay');
+var saveBtnEl = $('.saveBtn');
+
+
+
+
+//save to local storage function needed NEED TO NAME INPUT FOR EVENT USER INPUT - BELOW I HAVE ASSIGNED IT THE ID eventInput
+// saveBtnEl.addEventListener("click", function(event) {
+//     event.preventDefault();
+  
+//     var eventEl = document.querySelector("#eventInput").value;
+  
+//       localStorage.setItem("eventEl", eventEl);
+      
+//       //HAVEN'T DEAL WITH CLEARING OUT INPUT ETC WITH METHODS LIKE THE BELOW
+//       renderLastRegistered();
+//     }
