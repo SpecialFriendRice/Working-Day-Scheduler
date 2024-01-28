@@ -31,9 +31,10 @@ header {
   border-radius: 15px;
 }
 
-.row {
+/* not currently using CSS row styles with the html hard code currently in index file */
+.row { 
   white-space: pre-wrap;
-  height: 80px;
+  height: 180px;
   border-top: 1px solid white;
 }
 
