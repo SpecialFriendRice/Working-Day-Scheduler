@@ -30,7 +30,8 @@ var tbodyEl = $('.tBody');
 var today = dayjs();
 currentDayEl.text(today.format("D MMM YYYY"));
 
-
+//CURRENT HOUR TO COMPARE WITH TIMEBLOCK
+var currentHr = dayjs().hour()
 
 //WHY IS EVENT LISTENER NOT WORKING? "saveBtnEl.addEventListener is not a function"
 // saveBtnEl.addEventListener("click", function(event) {
@@ -38,27 +39,6 @@ currentDayEl.text(today.format("D MMM YYYY"));
 // });
 
 
-
-// README says "dynamically updated HTML and CSS powered by jQuery."
-
-// declare an array with literal notation. 
-//Note it is currently strings - should I change to integers etc? Or shall I destringify later? NOTE THAT THE TIME COLUMN IS NOT THE ONE THAT CHANGES COLOUR, ITS THE EVENT COLUMN. SO MAYBE THIS WOULD BE OK WITH A STRING (THEN COMPARE THE UNSTRINGIFIED VERSION WITH CURRENT TIME IN THE EVENT COLUMN?)
-var workdayHrs = ["09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00"];
-
-//creat function to add rows to Bootstrap table body (= tbody; have assigned it class = tBody and var = tBodyEl)
-
-function createRows(workdayHrs) {
-    for (var i = 0; i < workdayHrs.length; i++) {
-        var rowEl = document.createElement('tr');
-        //needs three cells (<td> elements in Bootstrap lingo) per row (<tr> in Bootstrap) so another for loop needed inside:
-            for (var j = 0; j < 3; j++) {
-                var cell = document.createElement("td"); //where do I .textContent? Do I need to add to create certain text elements???
-                rowEl.appendChild(cell);
-            }
-        //append rows to the table
-        tbodyEl.appendChild(rowEl)
-    }
-}
 
 
 
@@ -79,7 +59,4 @@ function createRows(workdayHrs) {
 //     if ()
 // }
 
-//HH is 24hr clock to two digits
-var currentHr = dayjs().format("HH")
 
-//or does DayJS have past/future widget? Yes, it has .isAfter and .isBefore, but for a given parameter. Will it work using current date and time as parameter? Would you still need to rely on the round to 24 hour clock to be able to have a "present" time?

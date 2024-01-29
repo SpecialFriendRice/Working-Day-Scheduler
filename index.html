@@ -10,7 +10,7 @@
       integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" 
       crossorigin="anonymous"
       />
-    <!-- STARTER FONTAWESOME LINK PROVIDED WAS TO 5.8.1; I'VE REPLACED WITH v4.7.0 AS WASN'T DOING WHAT I NEEDED <link
+    <!-- STARTER - FONTAWESOME LINK PROVIDED WAS TO 5.8.1; I'VE REPLACED WITH v4.7.0 AS WASN'T DOING WHAT I NEEDED <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
       integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
@@ -32,108 +32,107 @@
       <p class="lead">A simple calendar app for scheduling your work day</p>
       <p id="currentDay" class="lead"></p>
     </header>
-  <!-- STARTER <div class="container">    -->
+
+ <div class="container"> 
     
-    <!-- do I want to change this to a Bootstrap class like container-sm or container-lg for example to deal with viewport sizes? Or even container-fluid? or Bootstrap table?-->
+
+       <!-- BOOTSTRAP TABLE FORMAT -->
       
-    <!-- STARTER Timeblocks go here -->
-    
-
-    <!-- Trying vanilla JS to build a table but columns aren't working properly (about 15 lines of code)-->
-    <!-- <div class="container">
-      <div class = "schedule">
-        <div class = "columns">
-        <div class = "col col-2">Time</div>
-        <div class = "col col-8">Event</div>
-        <div class = "col col-2">Save</div>
-      </div>
-      <div class = "rows">
-        <div class = "row">09:00</div>
-        <div class = "row">10:00</div>
-        <div class = "row">11:00</div>
-        <div class = "row">12:00</div>
-        </div>
-      </div>
-    </div> -->
-
-       <!-- TRYING OUT BOOTSTRAP TABLE FORMAT BELOW  (ABOUT 27 ROWS) -->
-      <div class="container">
         <table class="table">
           <thead>
-            <tr>
+            <!-- BOTHER WITH TABLE HEADERS? WIDTH ATTRIBUTE NOT NEEDED WITH BOOTSTRAP COL-1/COL-10 CLASSES -->
+            <!-- <tr> 
               <th width="10%" scope="col">Time</th>
-              <th width="90%" scope="col" class="time-block">Event</th> <!--DOES THIS NEED THE TIME-BLOCK CLASS? -->
+              <th width="90%" scope="col" class="time-block">Event</th> 
               <th width="10%" scope="col">Save</th>
-            </tr>
+            </tr> -->
           </thead>
           <tbody class = "tBody">
             <tr>
-              <td class="hour">09:00</td>
-              <td class="time-block">HOLDING TEXT</td>
+              <td class="hour col-1">09:00</td>
+              <td class="time-block">
+                <textarea class="col-10"></textarea>
+              </td> 
               <td><button class="saveBtn">
                 <span class="fa fa-floppy-o" aria-hidden="true"></span>
               </button></td>
             </tr>
 
             <tr>
-              <td class="hour">10:00</td>
-              <td class="time-block">HOLDING TEXT</td>
-              <td><button class="saveBtn">
-                <span class="fa fa-floppy-o" aria-hidden="true"></span>
-                </button></td>
-            </tr>
-
-            <tr>
-              <td class="hour">11:00</td>
-              <td class="time-block">HOLDING TEXT</td>
+              <td class="hour col-1">10:00</td>
+              <td class="time-block">
+                <textarea class="col-10"></textarea>
+              </td> 
               <td><button class="saveBtn">
                 <span class="fa fa-floppy-o" aria-hidden="true"></span>
               </button></td>
             </tr>
 
             <tr>
-              <td class="hour">12:00</td>
-              <td class="time-block">HOLDING TEXT</td>
+              <td class="hour col-1">11:00</td>
+              <td class="time-block">
+                <textarea class="col-10"></textarea>
+              </td> 
               <td><button class="saveBtn">
                 <span class="fa fa-floppy-o" aria-hidden="true"></span>
               </button></td>
             </tr>
 
             <tr>
-              <td class="hour">13:00</td>
-              <td class="time-block">HOLDING TEXT</td>
+              <td class="hour col-1">12:00</td>
+              <td class="time-block">
+                <textarea class="col-10"></textarea>
+              </td> 
               <td><button class="saveBtn">
                 <span class="fa fa-floppy-o" aria-hidden="true"></span>
               </button></td>
             </tr>
 
             <tr>
-              <td class="hour">14:00</td>
-              <td class="time-block">HOLDING TEXT</td>
+              <td class="hour col-1">13:00</td>
+              <td class="time-block">
+                <textarea class="col-10"></textarea>
+              </td> 
               <td><button class="saveBtn">
                 <span class="fa fa-floppy-o" aria-hidden="true"></span>
               </button></td>
             </tr>
 
             <tr>
-              <td class="hour">15:00</td>
-              <td class="time-block">HOLDING TEXT</td>
+              <td class="hour col-1">14:00</td>
+              <td class="time-block">
+                <textarea class="col-10"></textarea>
+              </td> 
               <td><button class="saveBtn">
                 <span class="fa fa-floppy-o" aria-hidden="true"></span>
               </button></td>
             </tr>
 
             <tr>
-              <td class="hour">16:00</td>
-              <td class="time-block">HOLDING TEXT</td>
+              <td class="hour col-1">15:00</td>
+              <td class="time-block">
+                <textarea class="col-10"></textarea>
+              </td> 
               <td><button class="saveBtn">
                 <span class="fa fa-floppy-o" aria-hidden="true"></span>
               </button></td>
             </tr>
 
             <tr>
-              <td class="hour">17:00</td>
-              <td class="time-block">HOLDING TEXT</td>
+              <td class="hour col-1">16:00</td>
+              <td class="time-block">
+                <textarea class="col-10"></textarea>
+              </td> 
+              <td><button class="saveBtn">
+                <span class="fa fa-floppy-o" aria-hidden="true"></span>
+              </button></td>
+            </tr>
+
+            <tr>
+              <td class="hour col-1">17:00</td>
+              <td class="time-block">
+                <textarea class="col-10"></textarea>
+              </td> 
               <td><button class="saveBtn">
                 <span class="fa fa-floppy-o" aria-hidden="true"></span>
               </button></td>
@@ -141,117 +140,10 @@
 
           </tbody>
         </table>
-      </div>
+      
 
-
-
-
-
-
-
-       <!-- MY OWN HARDCODED DIVS IF NEEDED (ABOUT 100 ROWS OF CODE BELOW) NOTE THIS IS ONE RWO WITH W-100 ROW BREAKS Temporary div container with rows to check formatting of classes: what are time-block and hour? I have assigned them as classes but can't see their effects so far. Are the extra rows not being incorporated into the container? Inspect elements and look at body/container size. ALSO NEEDS PADDING  -->
-      <!-- <div class="row">
-        <div class="col-1 hour">
-          09:00
-        </div>
-        <div class="col-10 time-block">
-          Event
-        </div>
-        <div class="col-1 saveBtn">
-          Save
-        </div>
-
-        <div class="w-100"></div>
-        <div class="col-1 hour">
-          10:00
-        </div>
-        <div class="col-10 time-block">
-          Event
-        </div>
-        <div class="col-1 saveBtn">
-          Save
-        </div>
-
-        <div class="w-100"></div>
-        <div class="col-1 hour">
-          11:00
-        </div>
-        <div class="col-10 time-block">
-          Event
-        </div>
-        <div class="col-1 saveBtn">
-          Save
-        </div>
-        
-        <div class="w-100"></div>
-        <div class="col-1 hour">
-          12:00
-        </div>
-        <div class="col-10 time-block">
-          Event
-        </div>
-        <div class="col-1 saveBtn">
-          Save
-        </div>
-
-        <div class="w-100"></div>
-        <div class="col-1 hour">
-          13:00
-        </div>
-        <div class="col-10 time-block">
-          Event
-        </div>
-        <div class="col-1 saveBtn">
-          Save
-        </div>
-
-        <div class="w-100"></div>
-        <div class="col-1 hour">
-          14:00
-        </div>
-        <div class="col-10 time-block">
-          Event
-        </div>
-        <div class="col-1 saveBtn">
-          Save
-        </div>
-
-        <div class="w-100"></div>
-        <div class="col-1 hour">
-          15:00
-        </div>
-        <div class="col-10 time-block">
-          Event
-        </div>
-        <div class="col-1 saveBtn">
-          Save
-        </div>
-
-        <div class="w-100"></div>
-        <div class="col-1 hour">
-          16:00
-        </div>
-        <div class="col-10 time-block">
-          Event
-        </div>
-        <div class="col-1 saveBtn">
-          Save
-        </div>
-
-        <div class="w-100"></div>
-        <div class="col-1 hour">
-          17:00
-        </div>
-        <div class="col-10 time-block">
-          Event
-        </div>
-        <div class="col-1 saveBtn">
-          Save
-        </div>
-
-    </div> -->
     
-    <!-- STARTER </div> -->
+    </div>
 
       <!-- make sure the order of the scripts below is correct -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
