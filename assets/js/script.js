@@ -1,22 +1,6 @@
-//Use event.preventDefault() inside functions and standard js/jQuery wrapper learnt last week?
-//<p> div already provided in header for inserting today's date. I've currently hardcoded text "Today is" into html but should I dynamically do this as well as DayJS ref?
-//"timeblocks" = grid for working day (are we allowed to use a Bootstrap TABLE template?) - CSS has the styles for these elements already defined!
-//is there any point in creating divs with hours of day dynamically? Surely set times e.g. 9am to 6pm is best? Should I create a for loop to create a row for each hour between start of day and end of day or can I hardcode this?
-//timeblocks (hourblocks?) need to have the facility to change colour depending on actual time of day. Is this a widget or a  class to be compared with current time? ONLY EVENTINPUT COLUMN NEEDS TO CHANGE COLOUR ACCORDING TO TIME OF DAY, SO DOES THIS HAVE TO HAVE A HIDDEN TIME ATTRIBUTE? 
-
-// is it literally a grid rather than a table with one column displaying set hour, one column for the diary events and one column for save? Will this give the visual or actual continuity needed for the changing of times or does that even matter?
-//timeblocks need to be able to hold input with direct entry (or form/modal?)
-//timeblocks need to have a save button that will save input in local storage - already defined in CSS
-//is deleting/drag and drop(as per jQuery UI drag and drop widget?) needed or allowed? I think for now just overwrite and no delete/drag and drop as that would reorder time!
-//.saveBtn class is already formatted with hover changing cursor to finger
-//If time, put character limit on event column and/or word wrap?
-
-
-
-
-
-
-
+//jQuery wrapper learnt last week
+$(document).ready(function() {
+   
 //VARIABLES
 
 var containerEl = $('.container');
@@ -27,30 +11,66 @@ var tbodyEl = $('.tBody');
 //CURRENT DATE TO DISPLAY IN HEADER
 
 var today = dayjs();
-currentDayEl.text(today.format("D MMM YYYY"));
+currentDayEl.text(today.format('D MMM YYYY'));
 
-//CURRENT HOUR TO COMPARE WITH TIMEBLOCK - class past/present/future is now attribute of timeblock text area, will this have the 
-var currentHr = dayjs().hour()
+//CURRENT HOUR (0-24) TO COMPARE WITH TIME-BLOCK
+var currentHr = dayjs().hour();
+
+
+//To get the hour value hard coded into each html row to compare with actual time:
+//first get all cells/fields with class = hour
+//var hourFields = document.querySelectorAll('.hour');
+//get the hour (0-24) by trimming the hardcoded hour text inside
+//var hourValue = hourFields.textContent.trim();
+
+//OR use jQuery $.each() to iterate through the jQuery object?
+//For each element with a class of hour, get the hourValue from the text hardcoded within it
+$(.'hour').each(function() {
+    var hourValue = parseInt($(this).text().trim().split(':')[0]);
+// the below picks up the textarea that is the sibling to the element which holds the hour value. Note that textarea is an id as well as a tag, but not a class - does it need a hashtag?
+    var textarea = $(this).siblings('textarea'); 
+//is addClass the correct method? How will it update?
+    if (hourValue < currentHr) {
+        textarea.addClass('past');
+       } else if (hourValue > currentHr) {
+        textarea.addClass('future');
+       } else {
+        textarea.addClass('present');
+       }
+});
+
+//or do I need a for loop to go through 09:00 to end of day? Something like
+// for (let i = 9; i < 18; i++) {
+//    if (hourValue < currentHr) {
+//     textarea.addClass('past');
+//    } else if (hourValue > currentHr) {
+//     textarea.addClass('future');
+//    } else {
+//     textarea.addClass('present');
+//    }
+// }
+
 
 //FINISH Colour change function depending on current time; need to name input fields
 // function colorChange () {
-//     if (ALONG THE LINES OF CURRENTHOUR>HOUR) {
-//         $('#textarea'). //change class from past to present etc
+//     if (ALONG THE LINES OF CURRENTHR>HOUR) {
+//         $('#textarea'). //change class from past to present etc (ADD/AMEND CSS class provided in starter code)
 // } else if () {
     
 // }
 // }
 
 
-// WHY IS EVENT LISTENER NOT WORKING? "saveBtnEl.addEventListener is not a function" - because saveBtnEl is a jQuery object and addEventListener works on DOM objects
-saveBtnEl.on("click", function(event) {
-    alert("save button works");
-    //do i need a preventDefault?
+// WHY WAS EVENT LISTENER NOT WORKING? "saveBtnEl.addEventListener is not a function" - because saveBtnEl is a jQuery object and addEventListener works on DOM objects
+saveBtnEl.on('click', function(event) {
+    //do i still need a preventDefault?
     event.preventDefault(); 
+    //alert("save button works");
+
     //STILL TO DO - SAVE INPUT IN TEXTAREA TO LOCAL STORAGE WHEN SAVE BUTTON IS CLICKED
     //NOTE THAT AS ALL ROWS (HOURS) HAVE THE SAME ATTRIBUTE FOR THIS SECTION: ID = textarea, need to focus on the user input to the textarea in the same row i.e. a sibling of the save button that was clicked
-    var eventEl = $(this).siblings("textarea").value;
-    localStorage.setItem("eventEl", eventEl);
+    var eventEl = $(this).siblings('textarea').value;
+    localStorage.setItem('eventEl', eventEl);
 
 });
 
@@ -73,4 +93,8 @@ saveBtnEl.on("click", function(event) {
 //     }
 
 
+});
 
+
+//.saveBtn class is already formatted with hover changing cursor to finger
+//If time, put character limit on event text and/or word wrap?
