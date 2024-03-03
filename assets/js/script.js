@@ -1,4 +1,4 @@
-//jQuery wrapper learnt last week
+//jQuery wrapper from module 6
 $(document).ready(function() {
    
 //VARIABLES
@@ -13,23 +13,24 @@ var tbodyEl = $('.tBody');
 var today = dayjs();
 currentDayEl.text(today.format('D MMM YYYY'));
 
-//CURRENT HOUR (0-24) TO COMPARE WITH TIME-BLOCK
+//CURRENT HOUR (0-24) TO COMPARE WITH TIME-BLOCK HARDCODED VALUE
 var currentHr = dayjs().hour();
 
-
-//To get the hour value hard coded into each html row to compare with actual time:
-//first get all cells/fields with class = hour
-//var hourFields = document.querySelectorAll('.hour');
+//To get the hour value already hard coded into each html row to compare with actual time:
+//first get all elements with class = hour 
+//var hourEl = document.querySelectorAll('.hour');
 //get the hour (0-24) by trimming the hardcoded hour text inside
-//var hourValue = hourFields.textContent.trim();
+//var hourValue = hourEl.textContent.trim();
 
-//OR use jQuery $.each() to iterate through the jQuery object?
+//OR 
+//Use jQuery $.each() to iterate through the jQuery object?
 //For each element with a class of hour, get the hourValue from the text hardcoded within it
+//NB why is there an error for the dot to signify class in $(.'hour') below?
 $(.'hour').each(function() {
     var hourValue = parseInt($(this).text().trim().split(':')[0]);
-// the below picks up the textarea that is the sibling to the element which holds the hour value. Note that textarea is an id as well as a tag, but not a class - does it need a hashtag?
+// the code below picks up the textarea which is the sibling to the element which holds the hour value; the textarea is what we want to change colour
     var textarea = $(this).siblings('textarea'); 
-//is addClass the correct method? How will it update?
+//is addClass the correct method?
     if (hourValue < currentHr) {
         textarea.addClass('past');
        } else if (hourValue > currentHr) {
@@ -50,51 +51,26 @@ $(.'hour').each(function() {
 //    }
 // }
 
-
-//FINISH Colour change function depending on current time; need to name input fields
-// function colorChange () {
-//     if (ALONG THE LINES OF CURRENTHR>HOUR) {
-//         $('#textarea'). //change class from past to present etc (ADD/AMEND CSS class provided in starter code)
-// } else if () {
-    
-// }
-// }
-
-
+//Save input from textarea to local storage on clicking of the save button
 // WHY WAS EVENT LISTENER NOT WORKING? "saveBtnEl.addEventListener is not a function" - because saveBtnEl is a jQuery object and addEventListener works on DOM objects
 saveBtnEl.on('click', function(event) {
-    //do i still need a preventDefault?
     event.preventDefault(); 
     //alert("save button works");
 
-    //STILL TO DO - SAVE INPUT IN TEXTAREA TO LOCAL STORAGE WHEN SAVE BUTTON IS CLICKED
-    //NOTE THAT AS ALL ROWS (HOURS) HAVE THE SAME ATTRIBUTE FOR THIS SECTION: ID = textarea, need to focus on the user input to the textarea in the same row i.e. a sibling of the save button that was clicked
-    var eventEl = $(this).siblings('textarea').value;
-    localStorage.setItem('eventEl', eventEl);
+    
+    //Harness the fact that the user input is to the textarea that is a sibling of the save button.
+    var eventEl = $(this).siblings('textarea').val();
+
+    //Will val() work for this string of data? Does it need to be trimmed?
+
+    //To distinguish each textarea input so they don't write over each other in local storage, need to set each a unique key - in this case the unique id of the textarea element. Was there a way to harness the hourValue coded above and use that as the key that would have made this simpler?
+    var key = $(this).siblings('textarea').attr('id');
+    localStorage.setItem(key, eventEl);
 
 });
 
-
-
-
-
-
-//save to local storage function needed NEED TO NAME INPUT FOR EVENT USER INPUT - BELOW I HAVE ASSIGNED IT THE ID eventInput
-
-// saveBtnEl.addEventListener("click", function(event) {
-//     event.preventDefault();
-  
-//     var eventEl = document.querySelector("#eventInput").value;
-  
-//       localStorage.setItem("eventEl", eventEl);
-      
-//       //HAVEN'T DEALT WITH CLEARING OUT INPUT ETC WITH METHODS LIKE THE BELOW
-//       renderLastRegistered();
-//     }
-
-
-});
-
-
-//.saveBtn class is already formatted with hover changing cursor to finger
+//clearing out local storage/overwriting renderLastRegistered() etc?
 //If time, put character limit on event text and/or word wrap?
+
+});
+
