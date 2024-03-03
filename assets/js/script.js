@@ -26,7 +26,8 @@ var currentHr = dayjs().hour();
 //Use jQuery $.each() to iterate through the jQuery object?
 //For each element with a class of hour, get the hourValue from the text hardcoded within it
 //NB why is there an error for the dot to signify class in $(.'hour') below?
-$(.'hour').each(function() {
+//$(.'hour').each(function() {
+$('hour').each(function() {
     var hourValue = parseInt($(this).text().trim().split(':')[0]);
 // the code below picks up the textarea which is the sibling to the element which holds the hour value; the textarea is what we want to change colour
     var textarea = $(this).siblings('textarea'); 
@@ -56,10 +57,14 @@ $(.'hour').each(function() {
 saveBtnEl.on('click', function(event) {
     event.preventDefault(); 
     //alert("save button works");
-
+    //localStorage.setItem("Your Local Storage", "Is Working");
     
     //Harness the fact that the user input is to the textarea that is a sibling of the save button.
+    //the below is just bringing back eventEl as undefined; 
+    //DEBUG **this is because currently $(this).siblings('textarea').val() gives an empty object (array?)**
     var eventEl = $(this).siblings('textarea').val();
+    //console.log($(this).siblings('textarea'));
+    //console.log($(this).siblings('textarea').length); 
 
     //Will val() work for this string of data? Does it need to be trimmed?
 
