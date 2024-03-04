@@ -30,11 +30,12 @@ var currentHr = dayjs().hour();
 //$(.'hour').each(function() {
 $('.hour').each(function() {
     var hourValue = parseInt($(this).text().trim().split(':')[0]);
+   
+//**check all DOM traversal code to see if needs parent() or parent().prev() or parent().next()**
 
-//The DOM traversal that worked with the textareaValue works here too, to pick the right element (doesn't seem to work with sibling term in relation to the hour element) and get it to change background colour by using starter CSS and addClass: 
-
-    var textarea = $(this).parent().prev().find('textarea');
-    //console.log(textarea);
+//Traverse the DOM (previous sibling function wasn't working) to pick the correct textarea element and get it to change background colour by using the starter CSS classes and addClass: 
+    var textarea = $(this).parent().find('textarea');
+    
 
 //is addClass the correct method?
     if (hourValue < currentHr) {
@@ -47,10 +48,11 @@ $('.hour').each(function() {
         //the present class was originally in as the else but neither works
        }
 
-       //TESTS
-       //Both currentHr and hourValue are number type
-       //console.log("Current hour is " + currentHr);
-       //console.log(hourValue);
+    //    TESTS
+    //    Both currentHr and hourValue are number type and correct
+    //    console.log("Current hour is " + currentHr);
+    //    console.log(hourValue);
+    //    console.log(textarea);
       
 });
 
@@ -75,6 +77,7 @@ saveBtnEl.on('click', function(event) {
     //Harness the fact that the user input is to the textarea that is a relation of the save button's parent element.
     const textareaValue = $(this).parent().prev().find('textarea').val();
     //console.log(textareaValue);
+   
 
     //BELOW IS WAS WHAT WASN'T WORKING!
     //var textareaValue = $(this).siblings('textarea').val();
